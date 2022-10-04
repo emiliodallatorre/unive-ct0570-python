@@ -1,3 +1,4 @@
+from itertools import product
 import numpy as np
 import matplotlib.pyplot as plt 
 
@@ -23,6 +24,32 @@ class Model:
 		if sum(vector)==0: return 1 # all zeros
 		elif sum(vector)==1: # just one reactant
 			return self._state[np.where(vector==1)]
+		
+		# Covering the general case
+		else:
+			# Case 1
+			if sum(vector) == 2 and vector.count(1) == 2:
+				return product(self._state[np.where(vector == 1)])
+			
+			# Case 2
+			if sum(vector)==2 and 2 in vector:
+				return self._state[np.where(vector == 1)] * (self._state[np.where(vector == 1)]-1)/2
+			# Case 3
+			if sum(vector)==3 and vector.count(1) == 3:
+				return product(self._state[np.where(vector == 1)])
+
+			# Case 4
+			if sum(vector)==3 and 1 in vector and 2 in vector:
+				return self._state[np.where(vector == 1)] * self._state[np.where(vector == 2)] * (self._state[np.where(vector == 2)]-1)/2
+			
+			# Case 5
+			if sum(vector)==3 and 3 in vector:
+				return self._state[np.where(vector == 3)] * (self._state[np.where(vector == 3)]-1) * (self._state[np.where(vector == 3)]-2)/6
+
+
+			
+
+				
 
 		# to be continued..!
 			
