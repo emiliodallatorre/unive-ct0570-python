@@ -2,8 +2,8 @@ from itertools import product
 import numpy as np
 import matplotlib.pyplot as plt 
 
-class Model:
 
+class Model:
 	def __init__(self, species=[], state=[], parameters=[], reactants_stoic=[], products_stoic=[]):
 		""" 
 			Initialization of the object with the information about the model. 
