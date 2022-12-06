@@ -10,7 +10,8 @@ class Model:
 		"""
 		self._species = species
 		self._state = np.array(state)
-		self._parameters = parameters
+		self.
+		_parameters = parameters
 		self._reactants_stoic = np.array(reactants_stoic)
 		self._products_stoic = np.array(products_stoic)
 		self._propensities = np.zeros(len(self._parameters))
